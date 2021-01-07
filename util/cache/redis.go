@@ -2,13 +2,13 @@ package cache
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
 	ioutil "github.com/argoproj/argo-cd/util/io"
 
 	rediscache "github.com/go-redis/cache/v8"
 	"github.com/go-redis/redis/v8"
+	jsoniter "github.com/json-iterator/go"
 )
 
 func NewRedisCache(client *redis.Client, expiration time.Duration) CacheClient {
@@ -31,6 +31,7 @@ func (r *redisCache) Set(item *Item) error {
 		expiration = r.expiration
 	}
 
+	json := jsoniter.ConfigCompatibleWithStandardLibrary
 	val, err := json.Marshal(item.Object)
 	if err != nil {
 		return err
@@ -52,6 +53,7 @@ func (r *redisCache) Get(key string, obj interface{}) error {
 	if err != nil {
 		return err
 	}
+	json := jsoniter.ConfigCompatibleWithStandardLibrary
 	return json.Unmarshal(data, obj)
 }
 

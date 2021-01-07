@@ -41,6 +41,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway v1.14.6
 	github.com/improbable-eng/grpc-web v0.0.0-20181111100011-16092bd1d58a
+	github.com/json-iterator/go v1.1.10
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
 	github.com/malexdev/utfutil v0.0.0-20180510171754-00c8d4a8e7a8 // indirect
 	github.com/moby/term v0.0.0-20201110203204-bea5bbe245bf // indirect
